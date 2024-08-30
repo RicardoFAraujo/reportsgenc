@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Relatórios</title>
+</head>
+<body>
+    <h2>Relatórios</h2>
+    <ul>
+        {% for report in reports %}
+            <li><a href="{% url 'report_detail' report.id %}">{{ report.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
