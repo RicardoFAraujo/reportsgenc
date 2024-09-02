@@ -1,14 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatórios</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>Relatórios</h2>
-    <ul>
-        {% for report in reports %}
-            <li><a href="{% url 'report_detail' report.id %}">{{ report.name }}</a></li>
+<body class="bg-gray-100 p-8">
+
+    <h2 class="text-3xl font-bold mb-8">Relatórios</h2>
+
+    {% if reports_by_company %}
+        {% for company, reports in reports_by_company.items %}
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-4">{{ company.name }}</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-1">
+                    {% for report in reports %}
+                        <a href="{% url 'report_detail' report.id %}" class="block max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ report.name }}</h5>
+                            <p class="font-normal text-gray-700 dark:text-gray-400">{{ report.description }}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    {% else %}
+        <p class="text-gray-700">No reports available.</p>
+    {% endif %}
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

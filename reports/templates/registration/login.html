@@ -1,14 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+
+    <header class='flex shadow-md py-4 px-4 sm:px-10 bg-white font-sans min-h-[75px] tracking-wide relative z-50'>
+        <div class='flex flex-wrap items-center gap-4 w-full'>
+          <a href="javascript:void(0)">
+            <img src="https://artplan.com.br/wp-content/uploads/2024/03/gen_c_azul.png" alt="logo" class='w-24' />
+          </a>
+
+          <!-- Comentando os outros botões do header -->
+          <!--
+          <div id="collapseMenu"
+            class='lg:ml-16 max-lg:hidden lg:!block max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-40 max-lg:before:inset-0 max-lg:before:z-50'>
+            <button id="toggleClose" class='lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white p-3'>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 fill-black" viewBox="0 0 320.591 320.591">
+                <path
+                  d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                  data-original="#000000"></path>
+                <path
+                  d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                  data-original="#000000"></path>
+              </svg>
+            </button>
+      
+            <ul
+              class='lg:flex lg:gap-x-4 max-lg:space-y-3 max-lg:fixed max-lg:bg-white max-lg:w-2/3 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-4 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50'>
+              <li class='max-lg:border-b max-lg:pb-4 px-3 lg:hidden'>
+                <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-36' />
+                </a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'>
+                <a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-[#007bff] block font-semibold text-base'>Home</a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-black block font-semibold text-base'>Team</a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-black block font-semibold text-base'>Feature</a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-black block font-semibold text-base'>Blog</a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-black block font-semibold text-base'>About</a>
+              </li>
+              <li class='max-lg:border-b max-lg:py-3 px-3'><a href='javascript:void(0)'
+                  class='hover:text-[#007bff] text-black block font-semibold text-base'>Contact</a>
+              </li>
+            </ul>
+          </div>
+          -->
+
+          <div class='flex ml-auto'>
+            <button
+              class='px-4 py-2 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none'>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </header>
+
+    <div class="font-[sans-serif] bg-white">
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 items-center">
+          <form class="lg:col-span-3 md:col-span-2 max-w-lg w-full p-6 mx-auto" method="post">
+            {% csrf_token %}
+            <div class="mb-12">
+              <h3 class="text-gray-800 text-4xl font-extrabold">Login</h3>
+              <p class="text-gray-800 text-sm mt-6 leading-relaxed">Bem-vindo de volta ao sistema de relatórios da gen_c! Preencha seu e-mail e senha para acessar aos relatórios de desempenho de campanha. Explore sem moderação ;)</p>
+            </div>
+  
+            <div class="relative mb-6">
+              <label class="text-gray-800 text-sm font-semibold" for="email">E-mail</label>
+              <input id="email" type="email" name="username" placeholder="Digite o e-mail"
+                class="px-4 py-3 mt-1 bg-white w-full text-sm border border-gray-300 focus:ring-2 focus:ring-blue-600 rounded-md outline-none pr-10" />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="absolute right-3 top-10 w-5 h-5 text-gray-400" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.8 2.883L15 12.217V5.383zM14.8 13 8 9.217 1.2 13H14.8zM1 12.217l4.8-2.883L1 5.383v6.834z"/>
+              </svg>
+            </div>
+  
+            <div class="relative mb-6">
+              <label class="text-gray-800 text-sm font-semibold" for="password">Senha</label>
+              <input id="password" type="password" name="password" placeholder="Digite a senha"
+                class="px-4 py-3 mt-1 bg-white w-full text-sm border border-gray-300 focus:ring-2 focus:ring-blue-600 rounded-md outline-none pr-10" />
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="absolute right-3 top-10 w-5 h-5 text-gray-400 cursor-pointer" viewBox="0 0 16 16" id="togglePassword">
+                <path d="M8 3.5A5.5 5.5 0 0 1 13.8 7.4 5.5 5.5 0 0 1 8 11.5a5.5 5.5 0 0 1-5.8-4 5.5 5.5 0 0 1 5.8-4zm0 1A4.5 4.5 0 0 0 3.9 7.4 4.5 4.5 0 0 0 8 10.5a4.5 4.5 0 0 0 4.1-3.1 4.5 4.5 0 0 0-4.1-3.4zM8 5a2 2 0 0 1 1 3.7V9a1 1 0 1 1-2 0V8a2 2 0 0 1 1-3z"/>
+              </svg>
+            </div>
+  
+            <div class="flex flex-wrap items-center justify-between gap-4 mt-4">
+              <!--
+              <div class="flex items-center">
+                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded-md" />
+                <label for="remember-me" class="ml-3 block text-sm text-gray-800">
+                  Remember me
+                </label>
+              </div>
+              -->
+              <!--
+              <div>
+                <a href="javascript:void(0);" class="text-blue-600 font-semibold text-sm hover:underline">
+                  Forgot Password?
+                </a>
+              </div>
+              -->
+            </div>
+  
+            <div class="mt-12">
+              <button type="submit" class="w-full shadow-xl py-2.5 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                Vamos!
+              </button>
+            </div>
+  
+            <!--
+            <p class="text-sm text-gray-800 mt-8 text-center">Don't have an account? <a href="javascript:void(0);" class="text-blue-600 font-semibold hover:underline ml-1 whitespace-nowrap">Register here</a></p>
+            -->
+        </form>
+  
+            <div class="flex flex-col justify-center space-y-16 md:h-screen max-md:mt-16 min-h-full bg-gradient-to-r from-blue-500 to-blue-700 lg:px-8 px-4 py-4">
+            <div>
+                <h4 class="text-white text-lg font-semibold">Segurança</h4>
+                <p class="text-[13px] text-white mt-2">Os dados da sua campanha são importantes e estão seguros com a gente. Por isso, não compartilhe sua senha e login. Isso ajuda a manter sua estratégia exclusiva.</p>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-semibold">Não tem conta ainda?</h4>
+                <p class="text-[13px] text-white mt-2">Para solicitar acesso aos relatórios da sua empresa, entre em contato com o responsável pelo Atendimento gen_c que cuida da sua conta e ele providenciará seu acesso rapidamente.</p>
+            </div>
+            <div>
+                <h4 class="text-white text-lg font-semibold">Esqueceu sua senha e/ou login?</h4>
+                <p class="text-[13px] text-white mt-2">Caso já tenha um e-mail cadastrado, entre em contato com o Atendimento gen_c da sua conta informando o e-mail cadastrado para receber uma nova senha.</p>
+            </div>
+            </div>
+        </div>
+        </div>
+
+      <script>
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+  
+        togglePassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.classList.toggle('text-gray-700');
+        });
+      </script>
+  </body>
+  </html>
+
+
+
