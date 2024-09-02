@@ -59,10 +59,12 @@
           -->
 
           <div class='flex ml-auto'>
-            <button
-              class='px-4 py-2 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none'>
-              Sign Up
-            </button>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class='px-4 py-2 text-sm font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none'>
+                Logout
+              </button>
+            </form>
           </div>
         </div>
       </header>
@@ -152,6 +154,5 @@
       </script>
   </body>
   </html>
-
 
 
