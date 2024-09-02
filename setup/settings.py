@@ -26,7 +26,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["reportsgenc.pythonanywhere.com"]
 
 
 # Application definition
@@ -77,7 +77,7 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'setup.wsgi.application'
+WSGI_APPLICATION = 'reportsgenc.pythonanywhere.com'
 
 
 # Database
@@ -110,6 +110,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -124,7 +130,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 # Default primary key field type
