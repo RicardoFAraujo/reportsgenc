@@ -26,7 +26,8 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["reportsgenc.pythonanywhere.com"]
+
 
 
 # Application definition
@@ -77,7 +78,7 @@ TEMPLATES = [
 ]
 
 
-#WSGI_APPLICATION = 'reportsgenc.pythonanywhere.com'
+WSGI_APPLICATION = 'reportsgenc.pythonanywhere.com'
 
 
 # Database
@@ -121,11 +122,16 @@ AUTHENTICATION_BACKENDS = (
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
 USE_TZ = True
+
+
+SESSION_COOKIE_AGE = 1800  # Expira após 30 minutos
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Expira ao fechar o navegador
+
 
 
 # Static files (CSS, JavaScript, Images)
